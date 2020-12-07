@@ -6,6 +6,8 @@
 
 import english_quadgrams as quadgrams
 
+alphabet = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ'
+
 def groupinfo():
     '''
     # 1. een functie maken die groupinfo() heet en info van de groep weergeeft
@@ -29,8 +31,6 @@ def encrypt_ceasar(plaintext, shift):
     :return:
     '''
 
-
-    alphabet = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ'
     encrypt_ceasar = ''
 
     for i in plaintext:
@@ -43,11 +43,10 @@ def encrypt_ceasar(plaintext, shift):
             encrypt_ceasar += i
 
     result = print(encrypt_ceasar)
+
     return result
 
-
 encrypt_ceasar('I came, I saw, I conquered', 10)
-
 
 def decrypt_caesar(plaintext, shift):
     '''
@@ -57,7 +56,7 @@ def decrypt_caesar(plaintext, shift):
     :param shift:
     :return:
     '''
-    alphabet = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ'
+    
     decrypt_caesar = ''
 
     for i in plaintext:
@@ -69,8 +68,8 @@ def decrypt_caesar(plaintext, shift):
         else:
             decrypt_caesar += i
     result = print(str(decrypt_caesar))
+    
     return result
-
 
 decrypt_caesar('s mkwo, s ckg, s myxaeobon', 10)
 
