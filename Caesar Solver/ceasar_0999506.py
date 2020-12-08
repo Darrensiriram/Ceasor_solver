@@ -6,6 +6,8 @@
 
 import english_quadgrams as quadgrams
 
+alphabet = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ'
+
 def groupinfo():
     '''
     # 1. een functie maken die groupinfo() heet en info van de groep weergeeft
@@ -29,8 +31,6 @@ def encrypt_ceasar(plaintext, shift):
     :return:
     '''
 
-
-    alphabet = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ'
     encrypt_ceasar = ''
 
     for i in plaintext:
@@ -43,11 +43,10 @@ def encrypt_ceasar(plaintext, shift):
             encrypt_ceasar += i
 
     result = print(encrypt_ceasar)
+
     return result
 
-
 encrypt_ceasar('I came, I saw, I conquered', 10)
-
 
 def decrypt_caesar(plaintext, shift):
     '''
@@ -57,7 +56,7 @@ def decrypt_caesar(plaintext, shift):
     :param shift:
     :return:
     '''
-    alphabet = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ'
+    
     decrypt_caesar = ''
 
     for i in plaintext:
@@ -69,8 +68,8 @@ def decrypt_caesar(plaintext, shift):
         else:
             decrypt_caesar += i
     result = print(str(decrypt_caesar))
+    
     return result
-
 
 decrypt_caesar('s mkwo, s ckg, s myxaeobon', 10)
 
@@ -78,14 +77,42 @@ def quadgram_fitness(text):
     '''
     @todo 4. een functie maken die quadgram_fitness (text) heet libary importeren (dit is een beetje vaag)
     A function called quadgram_fitness(text)
-    that returns the quadgram fitnessof a string must be implemented.
+    that returns the quadgram fitness of a string must be implemented.
     Definition and examples of quadgram fitnessare given above.
     The function must make use of the dictionaryquadgram_score in the provided file english_quadgrams.py, which must beimported (not copied!).
 
     Example: quadgram_fitness("Wkh glh kdv ehhq fdvw!")
      must return anumber that coincides with 280.9567026 to at least 5 decimal places.
+
+    :param text:
+    :return:
     '''
-    return
+
+    newtext = ''
+    score = 0
+
+    for i in range(len(text)):
+        count = 0
+        if text[i] in alphabet:
+            while len(newtext) < 4:
+                newIndex = i + count
+                if newIndex in range(len(text)):
+                    newVal = text[newIndex]
+                    if newVal in alphabet:
+                        newtext += newVal.lower()
+                    count += 1
+                else:
+                    score = format(round(score, 7))
+                    print('quadgram_fitness('+text+') return '+str(score))
+                    return score
+            if newtext in quadgrams.quadgram_score:
+
+                score = score + quadgrams.quadgram_score[newtext]
+            else:
+                score = score + 23
+            newtext = ''
+
+quadgram_fitness("Wkh glh kdv ehhq fdvw!")
 
 def solve_caesar(ciphertext):
     '''
