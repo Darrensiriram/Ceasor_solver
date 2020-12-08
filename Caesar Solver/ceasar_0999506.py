@@ -5,13 +5,13 @@
 # 5. een functie maken die solve_ceasar(ciphertext) heet en die de tekst naar EN vertaald en return als een plaint text
 
 import english_quadgrams as quadgrams
+import finding_shift as shiftFinding
 
 alphabet = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ'
 
 def groupinfo():
     '''
     # 1. een functie maken die groupinfo() heet en info van de groep weergeeft
-
     :return:
     '''
     groupinfo = [
@@ -21,7 +21,7 @@ def groupinfo():
     groupInfoPrint = print(groupinfo)
     return groupInfoPrint
 
-
+groupinfo()
 def encrypt_ceasar(plaintext, shift):
     '''
     2. een functie maken die encrypt_ceasar(plaintext, shift) encrypted text returnen
@@ -46,12 +46,11 @@ def encrypt_ceasar(plaintext, shift):
 
     return result
 
-encrypt_ceasar('I came, I saw, I conquered', 10)
+encrypt_ceasar('ATTACK THE EAST WALL OF THE CASTLE AT DAWN', 5)
 
 def decrypt_caesar(plaintext, shift):
     '''
     # 3. een functie maken die decrypt_caesar(ciphertext , shift) decrypted text returnen als een string
-
     :param plaintext:
     :param shift:
     :return:
@@ -71,7 +70,7 @@ def decrypt_caesar(plaintext, shift):
     
     return result
 
-decrypt_caesar('s mkwo, s ckg, s myxaeobon', 10)
+decrypt_caesar('s mkwo, s ckg, s myxaeobon.', 10)
 
 def quadgram_fitness(text):
     '''
@@ -112,7 +111,7 @@ def quadgram_fitness(text):
                 score = score + 23
             newtext = ''
 
-quadgram_fitness("Wkh glh kdv ehhq fdvw!")
+quadgram_fitness("ATTACK THE EAST WALL OF THE CASTLE AT DAWN")
 
 def solve_caesar(ciphertext):
     '''
@@ -124,5 +123,9 @@ def solve_caesar(ciphertext):
     Example: solve_caesar("Lqdqlm ivl Kwvycmz!")
     must return "Divide andConquer!".
     '''
-    return
+   #eerst checken of het resultaat van de functie quadgram in de dictionary voorkomt (finding_shift)
+   #als het resultaat voorkomt die shift (shift is gelijk aan quadgramResultaat) gebruiken
+   #Vervolgens de functie decrypt_caesar gebruiken met de gevonden shift
+   #Waarde terug keren.
+
 
