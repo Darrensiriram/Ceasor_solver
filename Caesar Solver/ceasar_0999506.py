@@ -5,7 +5,7 @@
 # 5. een functie maken die solve_ceasar(ciphertext) heet en die de tekst naar EN vertaald en return als een plaint text
 
 import english_quadgrams as quadgrams
-import finding_shift as shiftFinding
+import sys
 
 alphabet = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ'
 
@@ -70,7 +70,7 @@ def decrypt_caesar(plaintext, shift):
     
     return result
 
-decrypt_caesar('s mkwo, s ckg, s myxaeobon.', 10)
+decrypt_caesar('Lqdqlm ivl Kwvycmz!', 8)
 
 def quadgram_fitness(text):
     '''
@@ -121,11 +121,19 @@ def solve_caesar(ciphertext):
     You can use quadgramanalysis to find the shift used, but the shift should not be output (just theplaintext).
 
     Example: solve_caesar("Lqdqlm ivl Kwvycmz!")
-    must return "Divide andConquer!".
+    must return "Divide and Conquer!".
     '''
-   #eerst checken of het resultaat van de functie quadgram in de dictionary voorkomt (finding_shift)
-   #als het resultaat voorkomt die shift (shift is gelijk aan quadgramResultaat) gebruiken
-   #Vervolgens de functie decrypt_caesar gebruiken met de gevonden shift
-   #Waarde terug keren.
-
-
+    for shift in range(len(alphabet)):
+        translated = ''
+        for symbol in ciphertext:
+            if symbol in alphabet:
+                num = alphabet.find(symbol)
+                num -= shift
+                if num < 0:
+                    num += len(alphabet)
+                translated += alphabet[num]
+            else:
+                translated += symbol
+        solve_ceasar = print('shift #%s: %s' % (shift, translated))
+    return solve_caesar
+#solve_caesar('Lqdqlm ivl Kwvycmz!')
