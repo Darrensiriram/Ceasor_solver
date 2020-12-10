@@ -46,12 +46,12 @@ def encrypt_ceasar(plaintext, shift):
         else:
             encrypt_ceasar += i
 
-    result = print(encrypt_ceasar)
+    result = encrypt_ceasar
 
     return result
 
 
-encrypt_ceasar('ATTACK THE EAST WALL OF THE CASTLE AT DAWN', 5)
+print(encrypt_ceasar('ATTACK THE EAST WALL OF THE CASTLE AT DAWN', 5))
 
 
 def decrypt_caesar(plaintext, shift):
@@ -69,15 +69,17 @@ def decrypt_caesar(plaintext, shift):
             position = alphabet.find(i)
             new_position = (position - shift) % 26
             new_character = alphabet[new_position]
+            if i.isupper():
+                new_character = new_character.upper()
             decrypt_caesar += new_character
         else:
             decrypt_caesar += i
-    result = print(str(decrypt_caesar))
+    result = str(decrypt_caesar)
 
     return result
 
 
-decrypt_caesar('Lqdqlm ivl Kwvycmz!', 8)
+print(decrypt_caesar("S mkwo, S ckg, S myxaeobon.", 10))
 
 
 def quadgram_fitness(text):
@@ -110,7 +112,6 @@ def quadgram_fitness(text):
                     count += 1
                 else:
                     score = format(round(score, 7))
-                    # print('quadgram_fitness(' + text + ') return ' + str(score))
                     return score
             if newtext in quadgrams.quadgram_score:
                 score = score + quadgrams.quadgram_score[newtext]
@@ -142,15 +143,15 @@ def solve_caesar(ciphertext):
                 num -= shift
                 if num < 0:
                     num += len(alphabet)
-                translated += alphabet[num]
+                new_character = alphabet[num].lower()
+                if symbol.isupper():
+                    new_character = new_character.upper()
+                translated += new_character
             else:
                 translated += symbol
         info = {'text': translated, 'code': quadgram_fitness(translated), 'shift': shift}
         list.append(info)
 
-    return min(list, key=lambda x:x['code'])
-
-
-
+    return min(list, key=lambda x:x['code'])['text']
 
 print(solve_caesar('Lqdqlm ivl Kwvycmz!'))
