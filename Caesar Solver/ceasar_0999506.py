@@ -9,7 +9,6 @@ import sys
 
 alphabet = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ'
 
-
 def groupinfo():
     '''
     # 1. een functie maken die groupinfo() heet en info van de groep weergeeft
@@ -19,12 +18,12 @@ def groupinfo():
         ('1014917', 'Thijs Verkade', 'DINF-1A'),
         ('099506', 'Darren Siriram', 'DINF-1A'),
     ]
-    groupInfoPrint = print(groupinfo)
-    return groupInfoPrint
+    
+    result = groupinfo
+    
+    return result
 
-
-groupinfo()
-
+print(groupinfo())
 
 def encrypt_ceasar(plaintext, shift):
     '''
@@ -34,7 +33,6 @@ def encrypt_ceasar(plaintext, shift):
     :param shift:
     :return:
     '''
-
     encrypt_ceasar = ''
 
     for i in plaintext:
@@ -42,6 +40,8 @@ def encrypt_ceasar(plaintext, shift):
             position = alphabet.find(i)
             new_position = (position + shift) % 26
             new_character = alphabet[new_position]
+            if i.isupper():
+                new_character = new_character.upper()
             encrypt_ceasar += new_character
         else:
             encrypt_ceasar += i
@@ -51,8 +51,7 @@ def encrypt_ceasar(plaintext, shift):
     return result
 
 
-print(encrypt_ceasar('ATTACK THE EAST WALL OF THE CASTLE AT DAWN', 5))
-
+print(encrypt_ceasar("The die has been cast!", 3))
 
 def decrypt_caesar(plaintext, shift):
     '''
@@ -80,7 +79,6 @@ def decrypt_caesar(plaintext, shift):
 
 
 print(decrypt_caesar("S mkwo, S ckg, S myxaeobon.", 10))
-
 
 def quadgram_fitness(text):
     '''
@@ -111,7 +109,7 @@ def quadgram_fitness(text):
                         newtext += newVal.lower()
                     count += 1
                 else:
-                    score = format(round(score, 7))
+                    # score = format(round(score, 7))
                     return score
             if newtext in quadgrams.quadgram_score:
                 score = score + quadgrams.quadgram_score[newtext]
@@ -120,8 +118,7 @@ def quadgram_fitness(text):
             newtext = ''
 
 
-print(quadgram_fitness("Divide and Conquer!"))
-
+print(quadgram_fitness("Wkh glh kdv ehhq fdvw!"))
 
 def solve_caesar(ciphertext):
     '''
@@ -154,4 +151,4 @@ def solve_caesar(ciphertext):
 
     return min(list, key=lambda x:x['code'])['text']
 
-print(solve_caesar('Lqdqlm ivl Kwvycmz!'))
+print(solve_caesar("Lqdqlm ivl Kwvycmz!"))
