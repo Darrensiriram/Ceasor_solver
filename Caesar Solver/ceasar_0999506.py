@@ -9,6 +9,7 @@ import sys
 
 alphabet = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ'
 
+
 def groupinfo():
     '''
     # 1. een functie maken die groupinfo() heet en info van de groep weergeeft
@@ -21,7 +22,10 @@ def groupinfo():
     groupInfoPrint = print(groupinfo)
     return groupInfoPrint
 
+
 groupinfo()
+
+
 def encrypt_ceasar(plaintext, shift):
     '''
     2. een functie maken die encrypt_ceasar(plaintext, shift) encrypted text returnen
@@ -46,7 +50,9 @@ def encrypt_ceasar(plaintext, shift):
 
     return result
 
+
 encrypt_ceasar('ATTACK THE EAST WALL OF THE CASTLE AT DAWN', 5)
+
 
 def decrypt_caesar(plaintext, shift):
     '''
@@ -55,7 +61,7 @@ def decrypt_caesar(plaintext, shift):
     :param shift:
     :return:
     '''
-    
+
     decrypt_caesar = ''
 
     for i in plaintext:
@@ -67,10 +73,12 @@ def decrypt_caesar(plaintext, shift):
         else:
             decrypt_caesar += i
     result = print(str(decrypt_caesar))
-    
+
     return result
 
+
 decrypt_caesar('Lqdqlm ivl Kwvycmz!', 8)
+
 
 def quadgram_fitness(text):
     '''
@@ -102,16 +110,17 @@ def quadgram_fitness(text):
                     count += 1
                 else:
                     score = format(round(score, 7))
-                    print('quadgram_fitness('+text+') return '+str(score))
+                    # print('quadgram_fitness(' + text + ') return ' + str(score))
                     return score
             if newtext in quadgrams.quadgram_score:
-
                 score = score + quadgrams.quadgram_score[newtext]
             else:
                 score = score + 23
             newtext = ''
 
-quadgram_fitness("ATTACK THE EAST WALL OF THE CASTLE AT DAWN")
+
+print(quadgram_fitness("Divide and Conquer!"))
+
 
 def solve_caesar(ciphertext):
     '''
@@ -123,6 +132,8 @@ def solve_caesar(ciphertext):
     Example: solve_caesar("Lqdqlm ivl Kwvycmz!")
     must return "Divide and Conquer!".
     '''
+    list = []
+
     for shift in range(len(alphabet)):
         translated = ''
         for symbol in ciphertext:
@@ -134,6 +145,12 @@ def solve_caesar(ciphertext):
                 translated += alphabet[num]
             else:
                 translated += symbol
-        solve_ceasar = print('shift #%s: %s' % (shift, translated))
-    return solve_caesar
-#solve_caesar('Lqdqlm ivl Kwvycmz!')
+        info = {'text': translated, 'code': quadgram_fitness(translated), 'shift': shift}
+        list.append(info)
+
+    return min(list, key=lambda x:x['code'])
+
+
+
+
+print(solve_caesar('Lqdqlm ivl Kwvycmz!'))
