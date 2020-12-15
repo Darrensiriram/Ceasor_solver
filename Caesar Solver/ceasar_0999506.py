@@ -23,8 +23,6 @@ def groupinfo():
     
     return result
 
-print(groupinfo())
-
 def encrypt_ceasar(plaintext, shift):
     '''
     2. een functie maken die encrypt_ceasar(plaintext, shift) encrypted text returnen
@@ -51,8 +49,6 @@ def encrypt_ceasar(plaintext, shift):
     return result
 
 
-print(encrypt_ceasar("The die has been cast!", 3))
-
 def decrypt_caesar(plaintext, shift):
     '''
     # 3. een functie maken die decrypt_caesar(ciphertext , shift) decrypted text returnen als een string
@@ -77,8 +73,6 @@ def decrypt_caesar(plaintext, shift):
 
     return result
 
-
-print(decrypt_caesar("S mkwo, S ckg, S myxaeobon.", 10))
 
 def quadgram_fitness(text):
     '''
@@ -118,8 +112,6 @@ def quadgram_fitness(text):
             newtext = ''
 
 
-print(quadgram_fitness("Wkh glh kdv ehhq fdvw!"))
-
 def solve_caesar(ciphertext):
     '''
     @todo 5. een functie maken die solve_ceasar(ciphertext) heet en die de tekst naar EN vertaald en return als een plaint text
@@ -151,4 +143,3 @@ def solve_caesar(ciphertext):
 
     return min(list, key=lambda x:x['code'])['text']
 
-print(solve_caesar("Lqdqlm ivl Kwvycmz!"))
