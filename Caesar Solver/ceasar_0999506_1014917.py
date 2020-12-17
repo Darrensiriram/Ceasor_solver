@@ -76,7 +76,7 @@ def decrypt_caesar(plaintext, shift):
 
 def quadgram_fitness(text):
     '''
-    @todo 4. een functie maken die quadgram_fitness (text) heet libary importeren (dit is een beetje vaag)
+    4. een functie maken die quadgram_fitness (text) heet libary importeren (dit is een beetje vaag)
     A function called quadgram_fitness(text)
     that returns the quadgram fitness of a string must be implemented.
     Definition and examples of quadgram fitnessare given above.
@@ -114,7 +114,7 @@ def quadgram_fitness(text):
 
 def solve_caesar(ciphertext):
     '''
-    @todo 5. een functie maken die solve_ceasar(ciphertext) heet en die de tekst naar EN vertaald en return als een plaint text
+    5. een functie maken die solve_ceasar(ciphertext) heet en die de tekst naar EN vertaald en return als een plaint text
     A function called solve_caesar(ciphertext)
     that returns the plaintext for aCaesar-encrypted ciphertext must be implemented.
     You can use quadgramanalysis to find the shift used, but the shift should not be output (just theplaintext).
